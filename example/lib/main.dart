@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:hello_world/hello_world.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -52,22 +51,14 @@ class _MyAppState extends State<MyApp> {
             builder: (context) => Center(
               child: RaisedButton(
                 child: const Text('Show toast'),
-                onPressed: () => _showToast(),
+                onPressed: () {
+                  Scaffold.of(context).showSnackBar(new SnackBar(
+                      content: new Text('Hello World!'),
+                  ));},
               ),
             ),
           )
       ),
-    );
-  }
-
-  void _showToast(){
-    Fluttertoast.showToast(
-      msg: "Hello world",
-      textColor: Colors.white,
-      toastLength: Toast.LENGTH_SHORT,
-      timeInSecForIos: 1,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.indigo,
     );
   }
 }
